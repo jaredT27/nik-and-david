@@ -1,6 +1,6 @@
 # Artwork, video, and audio
 
-The MIT license in `LICENSE` applies only to source code and documentation. It does not license files in `assets/`, character likenesses, artwork, video, or audio embedded in video.
+The MIT license in `LICENSE` applies only to source code and documentation. The separate [assets/LICENSE](assets/LICENSE) notice governs the media directory: the source-code license does not license character likenesses, artwork, video, or audio embedded in video.
 
 Copyright (c) 2026 Jared Theaman. All rights reserved for media except as separately permitted by the copyright holder.
 
