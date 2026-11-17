@@ -65,6 +65,6 @@ For Cloudflare, `wrangler.jsonc` points at that staged directory. Run Wrangler s
 
 Source code and documentation are licensed under [MIT](LICENSE). **Artwork, video, and embedded audio are excluded from that license**; see [ASSET_LICENSE.md](ASSET_LICENSE.md).
 
-Public GitHub publication is pending confirmation of media ownership and redistribution permissions. The local project includes those assets so the game remains playable. Their inclusion here does not assert permission to redistribute them. The [asset ledger](docs/ASSET_PROVENANCE.csv) lists every retained asset and its unresolved provenance; [the release review](docs/OPEN_SOURCE_REVIEW.md) records the remaining decision.
+The owner confirmed ownership of and permission to publish all included artwork, videos, and embedded audio on November 17, 2026. The assets are included so the game remains playable; they retain their copyright and have no separate open-content license. The [asset ledger](docs/ASSET_PROVENANCE.csv) records the 36 included files, their hashes, and the owner's publication permission. See [the release review](docs/OPEN_SOURCE_REVIEW.md) for the checks performed before publication.
 
 The cleanup preserved the complete original folder in a separate private archive. See [cleanup notes](docs/CLEANUP.md).

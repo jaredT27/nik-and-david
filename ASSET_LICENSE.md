@@ -2,8 +2,10 @@
 
 The MIT license in `LICENSE` applies only to source code and documentation. It does not license files in `assets/`, character likenesses, artwork, video, or audio embedded in video.
 
-No media license or ownership record was supplied with this project. Earlier production notes describe pre-generated AI media and a procedural original trailer score. Those descriptions do not establish the account, provider terms, ownership of input material, likeness permissions, or redistribution license for each final file.
+Copyright (c) 2026 Jared Theaman. All rights reserved for media except as separately permitted by the copyright holder.
 
-All 36 referenced assets are retained locally so the game keeps working. Their hashes and usage appear in [docs/ASSET_PROVENANCE.csv](docs/ASSET_PROVENANCE.csv), with rights marked **unverified**.
+On November 17, 2026, the owner confirmed ownership of and permission to publicly publish the game's artwork, videos, and embedded audio. All 36 referenced assets are included in this repository with that permission so the game remains playable. Their hashes and usage appear in [docs/ASSET_PROVENANCE.csv](docs/ASSET_PROVENANCE.csv), with publication permission marked **owner-confirmed**.
 
-Before public publication, the owner needs to confirm permission to redistribute each included asset and choose its license or usage terms. Assets without clearance must be replaced or omitted with corresponding source changes. Do not assume that source-code licensing also licenses the media.
+The ownership confirmation permits this public repository release; it does not apply the source-code MIT license to media or create a separate open-content license. Obtain additional media reuse, modification, or redistribution permissions from the copyright holder. This notice does not restrict rights provided by applicable law or GitHub's platform terms.
+
+Earlier production notes describe pre-generated AI media and an original procedural trailer score. Per-file provider/account and generation records are not recorded in the repository; the ledger preserves that distinction from the owner's confirmation.

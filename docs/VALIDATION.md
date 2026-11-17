@@ -1,6 +1,6 @@
 # Validation — 2026-11-17
 
-The cleaned project was checked locally before publication. GitHub publication is still pending media-rights confirmation; no remote CI run or public repository is claimed here.
+The cleaned project was checked locally before publication. The owner subsequently confirmed media ownership and publication permission. The table below records local validation; the GitHub Actions workflow reports remote CI results separately after publication.
 
 | Check | Result |
 | --- | --- |

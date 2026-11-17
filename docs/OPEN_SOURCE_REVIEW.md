@@ -1,6 +1,6 @@
 # Public release review — 2026-11-17
 
-Status: **prepared locally; not published to GitHub**.
+Status: **cleared for public publication following the owner's media-rights confirmation**.
 
 ## Completed
 
@@ -12,10 +12,10 @@ Status: **prepared locally; not published to GitHub**.
 - Kept the existing public preview URLs, which are social-sharing metadata rather than credentials. There are no network requests for third-party game services in the retained game source.
 - Added run/build/test instructions, ignore rules, a source-code MIT license, and a per-file asset ledger.
 
-## Remaining publication decision
+## Media confirmation and licensing
 
-The asset ledger contains 36 unverified media files. Earlier production notes explicitly called for an asset-rights review, and the project contains no media license or per-asset provenance record. Confirmation of the owner's redistribution rights and chosen media terms is required before uploading those files to a public repository. In particular, this covers the images, character likenesses, videos, and audio embedded in those videos.
+On November 17, 2026, Jared Theaman confirmed ownership of and permission to publish the game's artwork, videos, and embedded audio in response to the public-release question. The asset ledger records owner-confirmed publication permission for all 36 retained media files. Provider/account and generation records remain unspecified; the ledger does not describe these as independently verified provenance.
 
-The MIT license is scoped to source code and documentation; it makes no claim about media. Once media rights are resolved, update `ASSET_LICENSE.md` and the ledger, then publish the clean project under the verified GitHub account. GitHub authentication was checked successfully as `jaredT27`; no credentials were recorded in this project.
+The MIT license remains scoped to source code and documentation. Media retain their copyright and are included with the owner's publication permission; no separate open-content license was selected. See `ASSET_LICENSE.md`. GitHub authentication was checked successfully as `jaredT27`; no credentials were recorded in this project.
 
-Validation results are recorded in `VALIDATION.md` after the final checks.
+Validation results are recorded in `VALIDATION.md`.
