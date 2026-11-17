@@ -1,0 +1,40 @@
+# Local secrets and machine-specific state
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.DS_Store
+._*
+.vercel/
+.wrangler/
+.agent/
+.agents/
+.codex/
+
+# Dependencies and Python caches
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Generated builds, browser logs, screenshots, and video experiments
+output/
+outputs/
+dist/
+coverage/
+.playwright-cli/
+.playwright-mcp/
+playwright-report/
+test-results/
+launch-*/
+release-trailer/
+*.log
+
+# Local backups must remain outside the public repository
+*.bak
+*.backup
+*.tar
+*.tar.gz
+*.zip

@@ -1,0 +1,46 @@
+/* The first case is a wide, walkable cartoon set. */
+.actor-layer,.walk-marker,.walk-tools { display:none; }
+.walkable .actor-layer { display:block; position:absolute; inset:0; pointer-events:none; z-index:4; }
+.walkable .scene-shade { opacity:.3; }
+.walkable .scene-bg { object-fit:fill; }
+.scene-actor { position:absolute; width:18%; aspect-ratio:1; transform:translate(-50%,-94%) scale(var(--depth,1)); transform-origin:50% 94%; pointer-events:none; }
+.actor-sprite { position:absolute; inset:0; background-size:400% 200%; background-position:var(--col) var(--row); transform:scaleX(var(--facing,1)); background-repeat:no-repeat; }
+.actor-nik .actor-sprite { background-image:url('assets/nik-walk-sheet.png'); }
+.actor-david .actor-sprite { background-image:url('assets/david-walk-sheet.png'); }
+.actor-shadow { position:absolute; width:42%; height:6%; bottom:3%; left:29%; background:#16202760; filter:blur(2px); border-radius:50%; }
+.actor-name { position:absolute; top:102%; left:50%; transform:translateX(-50%); color:#fff5d6; background:#142330e8; padding:3px 9px; border-radius:12px; font-size:11px; opacity:.75; }
+.selected .actor-name { color:#f6c84c; opacity:1; border-bottom:2px solid #f6c84c; }
+.walkable .hotspot { min-width:0; min-height:0; padding:0; background:transparent; border:2px solid transparent; box-shadow:none; border-radius:12px; animation:none; opacity:1; }
+.walkable .hotspot img,.walkable .hotspot::before,.walkable .hotspot::after { display:none; }
+.walkable .hotspot:hover,.walkable .hotspot:focus-visible,.walkable.show-objects .hotspot,.walkable .hotspot.scanner-target { border-color:#ffdf79; background:#fff6c21a; box-shadow:0 0 15px #ffdf7940; transform:translate(-50%,-50%); }
+.walkable .hotspot.found { border-color:transparent; }
+.walkable.show-objects .hotspot.found { border-color:#8dcc9b; }
+.walkable .hotspot span { bottom:calc(100% + 8px); max-width:180px; font-size:12px; z-index:10; }
+.walkable .npc { width:17%; aspect-ratio:1; height:auto; padding:0; border:0; background-color:transparent; background-image:url('assets/daycare-npcs.png'); background-size:200% 100%; box-shadow:none; border-radius:0; transform:translate(-50%,-94%); animation:none; }
+.walkable .npc-owner { background-position:0 0; }
+.walkable .npc-witness { background-position:100% 0; }
+.walkable .npc img { visibility:hidden; width:100%; height:100%; border:0; }
+.walkable .npc:hover,.walkable .npc:focus-visible { transform:translate(-50%,-94%); filter:drop-shadow(0 0 5px #ffe497); }
+.walkable .npc span { bottom:100%; font-size:12px; }
+.walkable .npc i { right:25%; bottom:5%; top:auto; }
+.shifty-distracted .walkable .npc-owner { left:85% !important; top:72% !important; animation:none; }
+.shifty-distracted .walkable .npc-owner::after { font-size:10px; width:105px; right:0; bottom:95%; }
+.walkable .walk-marker:not([hidden]) { display:block; position:absolute; width:4%; height:2%; border:2px solid #fff3b5; border-radius:50%; transform:translate(-50%,-50%); z-index:3; pointer-events:none; box-shadow:0 0 12px #ffe07e80; }
+.adventure-active .walk-tools { display:flex; position:absolute; bottom:16px; left:18px; right:18px; gap:14px; align-items:center; justify-content:space-between; color:#b7c6d0; font-size:12px; }
+#walkStatus { margin:0; pointer-events:none; }
+#revealObjects { color:#f6deb0; border:1px solid #ffffff30; background:#15232e; border-radius:6px; padding:8px 12px; white-space:nowrap; }
+#revealObjects[aria-pressed=true] { border-color:#f6c84c; color:#f6c84c; }
+.scene-scan-beam { display:none; position:absolute; left:55%; top:50%; width:10%; height:13%; background:linear-gradient(120deg,#d6adffb0,#a774ff30); clip-path:polygon(0 100%,20% 0,100% 0); filter:drop-shadow(0 0 10px #b674ff); }
+.scanning-scene .scene-scan-beam { display:block; animation:uv-glow .4s alternate infinite; }
+@keyframes uv-glow { to { opacity:.5; } }
+.walkable .crayon-burst { left:64%; top:52%; }
+@media (prefers-reduced-motion:reduce) { .scanning-scene .scene-scan-beam { animation:none; } }
+.walkable .hotspot:not(.found):not(.gag)::after { display:none; }
+/* Narrow character hit areas keep nearby paperwork reachable. Artwork can extend outside. */
+.walkable .npc { width:8%; aspect-ratio:8 / 17; background-image:none; }
+.walkable .npc::before { content:""; position:absolute; width:212.5%; height:100%; left:50%; top:0; transform:translateX(-50%); background-image:url('assets/daycare-npcs.png'); background-size:200% 100%; pointer-events:none; }
+.walkable .npc-owner::before { background-position:0 0; }
+.walkable .npc-witness::before { background-position:100% 0; }
+.walkable .npc span,.walkable .npc::after,.walkable .npc i,.walkable .hotspot span { pointer-events:none; }
+
+.walkable .hotspot.gag.observed::after { display:none; }

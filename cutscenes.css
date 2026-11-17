@@ -1,0 +1,96 @@
+.cinema-overlay { position:fixed; inset:0; z-index:1000; display:grid; grid-template-rows:auto minmax(0,1fr) auto; height:100svh; color:#fff5dd; background:#101d26; overflow:hidden; }
+.cinema-top { display:flex; align-items:center; gap:28px; padding:14px 3.5vw; background:#0d1922; border-bottom:1px solid #e9c97638; }
+.cinema-eyebrow { margin:0 0 4px; font-size:10px; font-weight:800; letter-spacing:.18em; color:#d9b66f; }
+.cinema-top h2 { margin:0; font-size:20px; letter-spacing:-.02em; }
+.cinema-runtime { margin-left:auto; font:11px monospace; letter-spacing:.12em; color:#aebbc1; }
+.cinema-overlay button { color:#e9e6d6; background:#172c37; border:1px solid #ffffff30; border-radius:5px; padding:9px 15px; font-family:inherit; font-size:12px; font-weight:700; cursor:pointer; }
+.cinema-overlay button:hover { background:#29454e; border-color:#eac574; }
+.cinema-overlay button:focus-visible { outline:3px solid #fff4be; outline-offset:4px; }
+.cinema-overlay button:disabled { opacity:.35; cursor:default; }
+.cinema-top kbd { margin-left:10px; color:#a8b9bf; font-size:10px; }
+.cinema-frame { position:relative; min-height:0; overflow:hidden; isolation:isolate; background:#203a44; }
+.cinema-background { position:absolute; width:100%; height:100%; object-fit:cover; object-position:center 45%; opacity:.45; filter:saturate(.75); }
+.cinema-frame::after { content:''; position:absolute; inset:0; pointer-events:none; z-index:0; background:linear-gradient(0deg,#101d26bb,transparent 50%,#101d2640),linear-gradient(90deg,#101d2644,transparent 30% 70%,#101d2644); }
+.cinema-slate { position:absolute; top:22px; left:3.5vw; right:3.5vw; z-index:4; display:flex; justify-content:space-between; gap:24px; font:700 10px monospace; letter-spacing:.12em; color:#f6d890; text-shadow:0 2px 4px #000; }
+#cinemaHeadline { text-align:right; }
+.cinema-stage { position:absolute; inset:0; z-index:1; max-width:1380px; margin:auto; }
+.cinema-actor { position:absolute; bottom:10%; width:min(31vw,46vh); aspect-ratio:1; background-repeat:no-repeat; filter:drop-shadow(0 13px 6px #0006) brightness(.83); transform-origin:50% 95%; }
+.cinema-actor-left { left:1.5%; }
+.cinema-actor-right { right:1.5%; }
+.cinema-actor.speaking { filter:drop-shadow(0 13px 6px #0006); }
+.cinema-actor[data-character=nik] { background-image:url('assets/nik-walk-sheet.png'); background-size:400% 200%; background-position:0% 100%; }
+.cinema-actor[data-character=david] { background-image:url('assets/david-walk-sheet.png'); background-size:400% 200%; background-position:0% 100%; }
+.cinema-actor[data-character=timmy] { background-image:url('assets/rest-npcs.png'); background-size:300% 200%; background-position:100% 100%; }
+.cinema-actor[data-character=villain] { background-image:url('assets/rest-npcs.png'); background-size:300% 200%; background-position:50% 100%; }
+.cinema-actor-right[data-character=david] { transform:scaleX(-1); }
+.cinema-prop { position:absolute; width:min(36vw,54vh); left:50%; bottom:12%; transform:translateX(-50%); filter:drop-shadow(0 17px 9px #0006); }
+.cinema-prop svg { width:100%; display:block; overflow:visible; }
+.cinema-prop text { font:800 13px monospace; text-anchor:middle; fill:#213843; stroke:none; }
+.cinema-prop text[fill="#fff"] { fill:#fff; }
+.cinema-prop .big-number { font-size:34px; }
+.cinema-prop .prop-reveal,.cinema-prop .scan-light,.cinema-prop .confetti { opacity:0; }
+[data-beat='2'] .prop-reveal,[data-beat='2'] .scan-light,[data-beat='2'] .confetti { opacity:1; }
+.cinema-action { position:absolute; z-index:5; bottom:14px; margin:0; left:10%; right:10%; text-align:center; color:#e2d7b7; font-size:12px; font-style:italic; text-shadow:0 2px 5px #000; }
+.cinema-insert { position:absolute; z-index:3; top:13%; bottom:14%; left:24%; right:24%; background:#1b2c36; border:3px solid #ddbc73; border-radius:7px; box-shadow:8px 12px 0 #0004; opacity:0; transform:rotate(-1deg); overflow:hidden; pointer-events:none; }
+.cinema-insert.video-ready { opacity:1; }
+.cinema-insert video { width:100%; height:100%; object-fit:contain; display:block; }
+.cinema-insert-label { position:absolute; left:0; bottom:0; padding:5px 10px; background:#ddbc73; color:#192d37; font:700 9px monospace; letter-spacing:.07em; }
+.cinema-caption { position:relative; z-index:5; padding:18px 3.5vw 14px; border-top:1px solid #eac57450; background:#101d26; }
+.cinema-dialogue { display:grid; grid-template-columns:125px 1fr; align-items:start; gap:25px; min-height:64px; max-width:1300px; margin:auto; }
+.cinema-speaker { color:#eac574; margin:6px 0 0; font-weight:800; font-size:15px; }
+.cinema-text { margin:0; font-size:clamp(21px,2.15vw,31px); line-height:1.3; letter-spacing:-.015em; font-weight:600; text-wrap:balance; }
+.cinema-timeline { height:2px; background:#ffffff15; margin:13px 0 12px; }
+.cinema-timeline>div { height:100%; background:#eac574; width:0; }
+.cinema-controls { display:flex; align-items:center; gap:9px; }
+#cinemaProgress { font:12px monospace; color:#d6b56f; min-width:46px; }
+.cinema-shortcuts { margin-right:auto; font-size:11px; color:#97a9b3; }
+#cinemaNext { background:#eac574; color:#172933; border-color:#eac574; }
+#cinemaMotion { min-width:74px; }
+.cinema-gallery { display:grid; gap:10px; margin-top:16px; }
+.credits-panel { max-height:calc(100svh - 64px); overflow-y:auto; }
+.cinema-gallery button { padding:10px 14px; text-align:left; border-radius:6px; background:#f6c84c; color:#171923; }
+.cinema-enter .speaking { animation:cinema-react .55s ease-out; }
+.cinema-enter [data-beat='2'] .prop-reveal { animation:cinema-payoff .45s .15s both; }
+.cinema-enter [data-beat='2'] .scan-light { animation:cinema-scan 1.2s both; }
+.cinema-enter [data-prop=meal][data-beat='1'] .meal-paper { animation:cinema-print 1.6s ease-out both; }
+.cinema-enter [data-prop=boat] .toy-boat { animation:cinema-buoy 2s ease-in-out 2; transform-origin:50% 80%; }
+.cinema-enter [data-beat='2'] .confetti { animation:cinema-confetti 2.6s ease-out both; }
+.cinema-enter [data-prop=fog] .fog-cloud { animation:cinema-deflate 3.5s ease-out both; }
+.cinema-enter [data-prop=sub] .submarine { animation:cinema-buoy 2s ease-in-out 2; transform-origin:50% 80%; }
+.cinema-paused * { animation-play-state:paused!important; }
+@keyframes cinema-react { 30% { translate:0 -7px; } }
+@keyframes cinema-payoff { from { opacity:0; translate:0 -17px; } to { opacity:1; translate:0 0; } }
+@keyframes cinema-scan { from { opacity:0; } 35% { opacity:1; } to { opacity:.35; } }
+@keyframes cinema-print { from { translate:0 -70px; opacity:0; } 20% { opacity:1; } to { translate:0 0; opacity:1; } }
+@keyframes cinema-buoy { 50% { rotate:3deg; translate:0 -5px; } }
+@keyframes cinema-confetti { from { opacity:0; translate:0 60px; } 18% { opacity:1; translate:0 -20px; } to { opacity:1; translate:0 50px; } }
+@keyframes cinema-deflate { to { opacity:0; translate:60px -25px; } }
+@media (max-height:620px) { .cinema-top { padding-block:8px; } .cinema-caption { padding-block:12px; } .cinema-dialogue { min-height:48px; } .cinema-text { font-size:21px; } .cinema-slate { top:12px; } }
+@media (max-width:760px) { .cinema-runtime,.cinema-shortcuts { display:none; } .cinema-top { gap:12px; justify-content:space-between; } .cinema-dialogue { grid-template-columns:1fr; gap:6px; } .cinema-text { font-size:20px; } .cinema-controls { flex-wrap:wrap; } #cinemaProgress { margin-right:auto; } .cinema-slate { font-size:8px; } .cinema-action { font-size:10px; } .cinema-insert { left:12%; right:12%; } }
+@media (prefers-reduced-motion:reduce) { .cinema-overlay * { animation:none!important; } }
+
+.cinema-manual-frame .cinema-prop * { animation:none!important; }
+/* Physical reactions give the dialogue a visual payoff. */
+.cinema-actor[data-character=david].speaking { background-position:100% 100%; }
+[data-prop=scanner][data-beat='2'] .cinema-actor[data-character=david] { background-position:66.6667% 100%; }
+[data-prop=fog][data-beat='2'] .cinema-actor[data-character=david] { background-position:33.3333% 100%; }
+
+/* The opening establishes the team, allegation, and first task before the joke. */
+.cinema-prop .brief-title { font-size:17px; }
+[data-scene=opening] .cinema-action { color:#fff1c8; font-style:normal; font-weight:600; }
+.cinema-enter [data-prop=daycare-tip][data-beat='1'] .tip-question { animation:cinema-payoff .45s ease-out both; transform-origin:78% 52%; }
+.cinema-enter [data-prop=field-kit] .briefing-phone { animation:briefing-ring .18s ease-in-out 6 alternate; transform-origin:31% 63%; }
+@keyframes briefing-ring { from { rotate:-2deg; } to { rotate:2deg; } }
+
+[data-prop=field-kit] .cinema-actor[data-character=david] { background-position:66.6667% 100%; }
+
+/* Full-screen film inserts retain the readable captions and accessible controls. */
+.cinema-insert { inset:0; border:0; border-radius:0; box-shadow:none; transform:none; background:#101d26; }
+.cinema-insert video { object-fit:contain; }
+.cinema-insert-label { display:none; }
+.cinema-frame:has(.cinema-insert.video-ready:not(.hidden)) .cinema-stage { visibility:hidden; }
+.cinema-frame:has(.cinema-insert.video-ready:not(.hidden)) .cinema-slate { padding:10px 14px; top:10px; border-radius:4px; background:#101d26d9; }
+.cinema-frame:has(.cinema-insert.video-ready:not(.hidden)) .cinema-action { bottom:10px; background:#101d26dd; padding:8px 14px; border-radius:4px; left:18%; right:18%; }
+.title-play-note { margin:12px 0 0; color:#fff4d7; text-shadow:0 2px 6px #000; font-size:13px; font-weight:600; }
+
+.trailer-link { display:inline-flex; align-items:center; justify-content:center; padding:0 22px; min-height:48px; text-decoration:none; }

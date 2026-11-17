@@ -1,0 +1,100 @@
+.game-screen.adventure-active { grid-template-rows: auto auto minmax(0, 1fr) auto; }
+.agent-dock { display: flex; align-items: center; gap: 22px; padding: 10px 24px; color: #fff7df; background: #101b29; border-bottom: 1px solid #ffffff25; }
+.agent-switch { display: flex; gap: 8px; flex-shrink: 0; }
+.agent-switch button { display: flex; gap: 10px; align-items: center; text-align: left; padding: 5px 12px 5px 5px; background: transparent; color: #b6c0cc; border: 1px solid #ffffff30; border-radius: 8px; }
+.agent-switch button[aria-pressed="true"] { color: #fff7df; border-color: #f6c84c; background: #f6c84c14; box-shadow: inset 0 -2px #f6c84c; }
+.agent-switch img { width: 48px; height: 48px; border-radius: 5px; object-fit: cover; }
+.agent-switch span { font-weight: bold; }
+.agent-switch small { display: block; font-size: 10px; font-weight: normal; margin-top: 4px; }
+.agent-assignment { flex: 1; }
+.agent-assignment p { margin: 0; line-height: 1.45; font-size: 14px; }
+.agent-assignment #agentStatus { font-size: 10px; text-transform: uppercase; letter-spacing: .1em; color: #f6c84c; margin-bottom: 4px; }
+.agent-tools { display: flex; gap: 8px; }
+.agent-tools button { padding: 8px 14px; color: #fff7df; background: #233646; border: 1px solid #ffffff30; border-radius: 6px; font-size: 13px; }
+.agent-tools button[aria-pressed="true"], #adventureConfront { background: #f6c84c; color: #171923; }
+.agent-tools button:disabled { opacity: .4; }
+.adventure-active #objectivePanel { display: none; }
+.adventure-active .inventory { padding-block: 8px; }
+.adventure-active .inventory-slot { min-height: 58px; }
+.adventure-active .inventory-slot img { width: 34px; height: 34px; }
+.scanner-armed, .scanner-armed button { cursor: crosshair; }
+.scanner-target { border-color: #ac94ff; box-shadow: 0 0 24px #ac94ffaa; }
+.scanner-target span { opacity: 1; transform: translateX(-50%); }
+.shifty-distracted .npc-owner { left: 88% !important; top: 53% !important; border-color: #f6c84c; animation: shifty-talk 1.7s ease-in-out 3; }
+.shifty-distracted .npc-owner::after { content: "…and the leather!"; position: absolute; right: 4px; bottom: calc(100% + 12px); padding: 8px; width: 120px; color: #171923; background: #fff7df; border-radius: 12px 12px 0 12px; font-size: 12px; }
+.agent-arrival img { animation: partner-pop .35s ease-out; }
+@keyframes partner-pop { 50% { transform: translateY(-5px) rotate(-5deg); } }
+@keyframes shifty-talk { 50% { transform: translate(-50%, -55%) rotate(6deg); } }
+.invoice-bench { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 24px; color: #fff7df; background: #071019ef; backdrop-filter: blur(8px); }
+.invoice-shell { width: min(980px, 100%); max-height: 100%; overflow-y: auto; background: #10212b; border: 1px solid #ffffff30; border-radius: 10px; box-shadow: 0 30px 100px #0008; }
+.invoice-header { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 24px 32px; border-bottom: 1px solid #ffffff25; }
+.invoice-header h2 { font-size: clamp(22px, 3vw, 34px); line-height: 1.15; margin: 8px 0 0; }
+.invoice-header .eyebrow { color: #f6c84c; font-size: 10px; letter-spacing: .16em; }
+#closeInvoice { flex-shrink: 0; width: 48px; font-size: 28px; color: #fff7df; background: #ffffff14; border-radius: 6px; }
+.invoice-workspace { display: grid; grid-template-columns: 1.25fr 1fr; gap: 36px; padding: 32px; align-items: center; }
+.paper-invoice { position: relative; overflow: hidden; padding: 30px 25px; min-height: 340px; background: #f7efd6; color: #242b30; transform: rotate(-2deg); box-shadow: 5px 9px 0 #0003; font-family: 'Courier New', monospace; }
+.invoice-number { font-size: 10px; letter-spacing: .08em; }
+.paper-invoice h3 { padding-block: 16px; font-size: 23px; line-height: 1.25; }
+.invoice-address, .invoice-fineprint { font-size: 12px; line-height: 1.5; }
+.invoice-rule { border-top: 2px dashed #717168; margin-block: 20px; }
+.invoice-line { display: flex; gap: 16px; justify-content: space-between; font-size: 15px; line-height: 1.5; }
+.invoice-line strong { white-space: nowrap; }
+.invoice-scribble { font-family: Georgia, serif; font-style: italic; font-size: 15px; margin: 35px 0 0; color: #627487; }
+.invoice-stamp { display: none; margin-top: 24px; width: fit-content; padding: 8px 12px; border: 3px solid #415840; color: #415840; transform: rotate(-8deg); font-weight: bold; font-size: 18px; }
+.restored .invoice-stamp { display: block; animation: stamp-in .3s ease-out; }
+.restored .paper-invoice h3 { color: #64362f; }
+.restored .invoice-scribble { display: none; }
+.stapler-art { width: min(260px,100%); height: 100px; }
+.scanner-console .eyebrow { color: #f6c84c; font-size: 11px; }
+#invoiceInstruction { line-height: 1.65; font-size: 16px; }
+.invoice-filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.invoice-filters button { padding: 10px 15px; border: 1px solid #a79bcc; border-radius: 6px; background: #ac94ff15; color: #fff7df; font-size: 13px; }
+.invoice-filters button:hover:not(:disabled) { background: #ac94ff40; }
+.scanner-note { font-family: Georgia, serif; font-style: italic; font-size: 13px; color: #a7b6bf; }
+.invoice-status { margin: 0; padding: 18px 32px; border-top: 1px solid #ffffff25; line-height: 1.5; color: #cfbfff; min-height: 61px; }
+.invoice-scanline { display: none; position: absolute; top: -10%; left: 0; width: 100%; height: 22%; background: linear-gradient(transparent, #b889ff99); border-bottom: 3px solid #c7a2ff; z-index: 2; }
+.scanning .invoice-scanline { display: block; animation: scan-paper 1.5s linear; }
+@keyframes scan-paper { to { top: 110%; } }
+@keyframes stamp-in { from { transform: scale(1.4) rotate(-8deg); opacity: 0; } }
+.crayon-burst { position: absolute; z-index: 5; left: 10%; top: 40%; pointer-events: none; }
+.crayon-burst i { position: absolute; display: block; width: 10px; height: 48px; border-radius: 4px 4px 1px 1px; border-block: 6px solid #ffffff90; background: hsl(calc(var(--i) * 65) 70% 55%); animation: crayon-jump 2s ease-out both; }
+@keyframes crayon-jump { 0% { opacity: 0; transform: translate(0,0); } 25%,60% { opacity: 1; transform: translate(calc(var(--i) * 24px - 15px), calc(var(--i) * -9px - 60px)) rotate(calc(var(--i) * 24deg - 40deg)); } 100% { opacity: 0; transform: translate(calc(var(--i) * 30px), 30px) rotate(100deg); } }
+@media (max-width: 700px) {
+  .agent-dock { padding: 8px 12px; gap: 8px; display: grid; grid-template-columns: 1fr auto; }
+  .agent-switch { gap: 6px; }
+  .agent-switch button { padding: 4px 8px 4px 4px; gap: 6px; font-size: 13px; }
+  .agent-switch img { width: 36px; height: 36px; }
+  .agent-switch small { font-size: 9px; }
+  .agent-assignment { grid-row: 2; grid-column: 1 / -1; }
+  .agent-assignment #agentStatus { display: none; }
+  .agent-assignment p { font-size: 12px; }
+  .agent-tools { flex-direction: column; gap: 4px; }
+  .agent-tools button { font-size: 11px; padding: 5px 8px; max-width: 125px; }
+  .agent-tools button:disabled { display: none; }
+  .adventure-active .inventory-slot { min-height: 48px; }
+  .adventure-active .inventory-slot small { display: none; }
+  .adventure-active .inventory-slot img { display: none; }
+  .adventure-active .npc { width: 60px; height: 60px; }
+  .adventure-active .hotspot { width: 44px; height: 44px; min-height: 44px; }
+  .adventure-active .hotspot img { width: 26px; height: 26px; }
+  .invoice-bench { padding: 10px; }
+  .invoice-header { padding: 16px; gap: 10px; }
+  .invoice-header h2 { font-size: 22px; }
+  .invoice-workspace { grid-template-columns: 1fr; gap: 18px; padding: 20px; }
+  .paper-invoice { min-height: 0; padding: 18px; }
+  .paper-invoice h3 { padding-block: 6px; font-size: 20px; margin-block: 12px; }
+  .invoice-rule { margin-block: 12px; }
+  .invoice-scribble { margin-top: 16px; }
+  .stapler-art, .scanner-note { display: none; }
+  #invoiceInstruction { font-size: 14px; line-height: 1.4; }
+  .invoice-status { padding: 14px 18px; font-size: 13px; }
+}
+@media (max-height: 520px) and (min-width: 701px) {
+  .agent-dock { padding-block: 4px; }
+  .agent-switch img { width: 34px; height: 34px; }
+  .invoice-workspace { padding: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .agent-arrival img, .shifty-distracted .npc-owner, .restored .invoice-stamp, .scanning .invoice-scanline, .crayon-burst i { animation: none; }
+  .crayon-burst i { transform: translate(calc(var(--i) * 15px), -40px); }
+}

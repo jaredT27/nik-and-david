@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nik & David: The Fraud Legacy</title>
+    <meta name="description" content="A quick point-and-click fraud mystery starring Nik and David." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nik-david-share-preview.vercel.app" />
+    <meta property="og:title" content="Nik & David: The Fraud Legacy" />
+    <meta property="og:description" content="Follow the paperwork, interview odd neighbors, and bust the fraud trail." />
+    <meta property="og:image" content="https://nik-david-share-preview.vercel.app/assets/social-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Nik & David: The Fraud Legacy" />
+    <meta name="twitter:description" content="A quick point-and-click fraud mystery starring Nik and David." />
+    <meta name="twitter:image" content="https://nik-david-share-preview.vercel.app/assets/social-share.jpg" />
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="game.css?v=spyfox-review-3" />
+    <link rel="stylesheet" href="cutscenes.css?v=spyfox-review-3" />
+    <link rel="stylesheet" href="first-case.css?v=spyfox-review-3" />
+    <link rel="stylesheet" href="walking.css?v=spyfox-review-3" />
+    <link rel="stylesheet" href="adventure.css?v=spyfox-review-3" />
+    <link rel="stylesheet" href="desktop.css?v=playable-opening-1" />
+  </head>
+  <body>
+    <div id="app">
+      <section id="titleScreen" class="title-screen">
+        <picture>
+          <source media="(max-width: 700px) and (orientation: portrait)" srcset="assets/title-mobile.jpg" />
+          <img class="title-art" src="assets/title.jpg" fetchpriority="high" alt="" />
+        </picture>
+        <div class="title-copy">
+          <div class="title-actions">
+            <button id="continueButton" class="primary-button continue-button hidden">Continue Case</button>
+            <button id="startButton" class="primary-button title-start-button">New Case</button>
+            <button id="creditsButton" class="ghost-button">Case Notes</button>
+            <a href="trailer.html" class="ghost-button trailer-link">Watch reveal</a>
+          </div>
+          <p class="title-play-note">A point-and-click comedy mystery · Best on desktop · Saves automatically</p>
+          <p id="saveSummary" class="save-summary hidden"></p>
+        </div>
+        <div id="creditsPanel" class="credits-panel hidden" role="dialog" aria-modal="true" aria-labelledby="creditsTitle">
+          <button id="closeCredits" class="icon-button" aria-label="Close case notes">&times;</button>
+          <h2 id="creditsTitle">Case Notes</h2>
+          <p><strong>How to play:</strong> Click an object to walk over and investigate. Use 1 for Nik (talk) and 2 for David (gadgets). Choose a gadget, then click an object to use it. Select a filed clue, then click a person to ask about it. Escape cancels your selection. H reveals objects. Space finishes a dialogue line; press again to continue. There is no time limit. Hints are free.</p>
+          <p>Five locations, three fake businesses, one mastermind, and enough suspicious paperwork to make David extremely calm.</p>
+          <p>Screening room · replay the 23-second briefing and the animated capers. Pause to read at your own pace. Later scenes contain spoilers.</p>
+          <div class="cinema-gallery">
+            <button data-cinema="opening">Watch opening · Operation: Paper Trail · 23 sec</button>
+            <button data-cinema="interlude">Watch villain interlude · Rescue yacht · 13 sec (spoilers)</button>
+            <button data-cinema="charityAfter">Watch charity aftermath · The lunch special · 12 sec (spoilers)</button>
+            <button data-cinema="towerBefore">Watch tower briefing · Damage control · 16 sec (spoilers)</button>
+            <button data-cinema="ending">Watch ending · Liquid assets · 15 sec (spoilers)</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="gameScreen" class="game-screen hidden">
+        <header class="hud">
+          <div class="brand-mark">
+            <img src="assets/icon_magnifying_glass.jpg" alt="" />
+            <span>Nik & David</span>
+          </div>
+          <div class="case-status">
+            <p id="locationKicker">Fraud Busters HQ</p>
+            <h2 id="locationTitle">Hotline Desk</h2>
+          </div>
+          <div class="hud-actions">
+            <button id="hintButton" class="tool-button" title="A useful next step. No rating penalty.">Need a lead?</button>
+            <button id="boardButton" class="tool-button" title="Shortcut: B">Board</button>
+            <button id="muteButton" class="tool-button" aria-pressed="false">Sound: On</button>
+          </div>
+        </header>
+
+        <section id="agentDock" class="agent-dock hidden" aria-label="Investigation team">
+          <div class="agent-switch" role="group" aria-label="Choose your investigator">
+            <button id="agentNik" aria-pressed="true"><img src="assets/nik-correct.png" loading="lazy" alt="" /><span>Nik<small>Talk & distract</small></span></button>
+            <button id="agentDavid" aria-pressed="false"><img src="assets/david-correct.png" loading="lazy" alt="" /><span>David<small>Inspect & scan</small></span></button>
+          </div>
+          <div class="agent-assignment"><p id="agentStatus"></p><p id="agentGoal" aria-live="polite"></p></div>
+          <div class="agent-tools"><button id="scannerButton" aria-pressed="false">Staple-O-Matic</button><button id="distractButton" class="hidden">Distract Ms. Shifty</button><button id="adventureConfront" class="hidden">Confront Owner</button></div>
+        </section>
+        <aside id="desktopObjective" class="desktop-objective" aria-label="Case briefing"></aside>
+        <main id="stage" class="stage" aria-label="Current investigation scene">
+          <div id="sceneWorld" class="scene-world">
+            <img id="sceneBg" class="scene-bg" alt="" />
+            <div class="scene-shade"></div>
+            <div id="hotspotLayer" class="hotspot-layer"></div>
+            <div id="npcLayer" class="npc-layer"></div>
+            <div id="actorLayer" class="actor-layer"></div>
+            <div id="walkMarker" class="walk-marker" hidden></div>
+          </div>
+          <aside id="objectivePanel" class="objective-panel"></aside>
+          <div class="walk-tools"><p id="walkStatus" role="status">Click a person or object. Double-click to hurry.</p><button id="cancelFieldSelection" class="hidden">Put away · Esc</button><button id="revealObjects" aria-pressed="false">Show objects · H</button></div>
+        </main>
+
+        <footer class="inventory">
+          <div class="inventory-head">
+            <span>Current Evidence</span>
+            <strong id="currentCount">0/5</strong>
+          </div>
+          <div id="inventoryTrack" class="inventory-track"></div>
+        </footer>
+      </section>
+    </div>
+
+    <div id="dialogueScrim" class="dialogue-scrim hidden"></div>
+    <section id="dialogueBox" class="dialogue-box hidden" role="dialog" aria-modal="true" aria-labelledby="dialogueSpeaker" aria-describedby="dialogueAnnouncement">
+      <div id="dialoguePortrait" class="dialogue-portrait" aria-hidden="true"></div>
+      <div class="dialogue-copy">
+        <p id="dialogueSpeaker" class="dialogue-speaker">Nik</p>
+        <p id="dialogueText" class="dialogue-text" aria-hidden="true"></p>
+        <p id="dialogueAnnouncement" class="sr-only" aria-live="polite"></p>
+      </div>
+      <button id="dialogueNext" class="dialogue-next">Next</button>
+    </section>
+
+    <section id="boardOverlay" class="board-overlay hidden" aria-modal="true" role="dialog" aria-labelledby="boardTitle">
+      <div class="board-shell">
+        <header class="board-header">
+          <div>
+            <p class="eyebrow">Fraud Trail</p>
+            <h2 id="boardTitle">Evidence Board</h2>
+          </div>
+          <div class="board-header-actions">
+            <p id="boardStats" class="board-stats"></p>
+            <button id="closeBoard" class="icon-button" aria-label="Close evidence board">&times;</button>
+          </div>
+        </header>
+        <div id="boardTrail" class="board-trail"></div>
+        <div id="boardGrid" class="board-grid"></div>
+      </div>
+    </section>
+
+    <section id="confrontOverlay" class="confront-overlay hidden" role="dialog" aria-modal="true" aria-label="Confrontation">
+      <div class="confront-shell">
+        <button id="closeConfront" class="icon-button" aria-label="Back away from the confrontation">&times;</button>
+        <header class="confront-header">
+          <div id="confrontPortrait" class="confront-portrait" aria-hidden="true"></div>
+          <div class="confront-copy">
+            <p id="confrontKicker" class="eyebrow">The claim</p>
+            <h2 id="confrontClaim"></h2>
+          </div>
+        </header>
+        <p id="confrontPrompt" class="confront-prompt" aria-live="polite"></p>
+        <div id="confrontChoices" class="confront-choices"></div>
+      </div>
+    </section>
+
+    <section id="caseModal" class="case-modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalText">
+      <div class="case-modal-panel">
+        <p id="modalKicker" class="eyebrow">Fraud Busted</p>
+        <h2 id="modalTitle">Case closed</h2>
+        <p id="modalText"></p>
+        <button id="modalButton" class="primary-button">Continue</button>
+      </div>
+    </section>
+
+    <section id="caseTransition" class="case-transition hidden" role="status" aria-live="polite">
+      <div class="case-file">
+        <p id="transitionKicker" class="eyebrow">Case file</p>
+        <h2 id="transitionTitle">Incoming tip</h2>
+        <p id="transitionText"></p>
+        <strong>Stamping file...</strong>
+      </div>
+    </section>
+
+    <div id="toast" class="toast hidden" aria-live="polite"></div>
+    <section id="cinemaOverlay" class="cinema-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="cinemaTitle">
+      <header class="cinema-top">
+        <div><p class="cinema-eyebrow">NIK &amp; DAVID / SHORT SUBJECTS</p><h2 id="cinemaTitle"></h2></div>
+        <span id="cinemaRuntime" class="cinema-runtime"></span>
+        <button id="cinemaSkip">Skip scene <kbd>Esc</kbd></button>
+      </header>
+      <div class="cinema-frame" id="cinemaFrame">
+        <img id="cinemaBackground" class="cinema-background" alt="" />
+        <div class="cinema-slate"><span id="cinemaLocation"></span><span id="cinemaHeadline"></span></div>
+        <div class="cinema-stage" aria-hidden="true">
+          <div id="cinemaActorLeft" class="cinema-actor cinema-actor-left"></div>
+          <div id="cinemaProp" class="cinema-prop"></div>
+          <div id="cinemaActorRight" class="cinema-actor cinema-actor-right"></div>
+        </div>
+        <div id="cinemaInsert" class="cinema-insert hidden">
+          <video id="cinemaVideo" muted playsinline preload="auto" aria-label="Animated visual gag"></video>
+          <span class="cinema-insert-label">EXHIBIT: EXTREMELY SUSPICIOUS</span>
+        </div>
+        <p id="cinemaAction" class="cinema-action"></p>
+      </div>
+      <footer class="cinema-caption">
+        <div class="cinema-dialogue" role="status" aria-live="polite" aria-atomic="true"><p id="cinemaSpeaker" class="cinema-speaker"></p><p id="cinemaText" class="cinema-text"></p></div>
+        <div class="cinema-timeline" aria-hidden="true"><div id="cinemaTimelineFill"></div></div>
+        <div class="cinema-controls">
+          <span id="cinemaProgress"></span>
+          <span class="cinema-shortcuts">Space: pause · ← / →: lines</span>
+          <button id="cinemaSound" aria-pressed="false">Sound: On</button>
+          <button id="cinemaReplay" aria-label="Replay scene from the beginning">Replay</button>
+          <button id="cinemaBack" aria-label="Previous line">← Back</button>
+          <button id="cinemaMotion" aria-pressed="false">Pause</button>
+          <button id="cinemaNext">Next →</button>
+        </div>
+      </footer>
+    </section>
+    <section id="invoiceBench" class="invoice-bench hidden" role="dialog" aria-modal="true" aria-labelledby="invoiceTitle">
+      <div class="invoice-shell">
+        <header class="invoice-header"><div><p class="eyebrow">DAVID’S FIELD LAB / EXHIBIT 04</p><h2 id="invoiceTitle">A very expensive box of crayons.</h2></div><button id="closeInvoice" aria-label="Close invoice inspection">×</button></header>
+        <div class="invoice-workspace">
+          <article class="paper-invoice" aria-label="Suspicious invoice">
+            <div class="invoice-scanline" aria-hidden="true"></div>
+            <p class="invoice-number">RECEIPT NO. 0048 / COPY FOR AUDITOR</p>
+            <h3 id="invoiceVendor">LITTLE LEARNERS SUPPLY CO.</h3>
+            <p class="invoice-address">Billed to: Quality Learing Center</p>
+            <div class="invoice-rule"></div>
+            <p class="invoice-line"><span id="invoiceItem">Crayons &amp; classroom snacks</span><strong>$4,800.00</strong></p>
+            <p class="invoice-fineprint">Payment received. Questions discouraged.</p>
+            <div class="invoice-stamp">ORIGINAL INK<br/>RECOVERED</div>
+            <p class="invoice-scribble">For the children. Obviously.</p>
+          </article>
+          <aside class="scanner-console">
+            <svg viewBox="0 0 260 120" class="stapler-art" role="img" aria-label="Staple-O-Matic ultraviolet scanner disguised as a stapler"><path d="M26 80h204v20H26z" fill="#364754"/><path d="M42 26h139l48 45H35z" fill="#edbd49"/><path d="M52 38h108l20 18H49z" fill="#112330"/><circle cx="69" cy="47" r="4" fill="#ac94ff"/><path d="M202 71v18H40V71" fill="none" stroke="#8d77dd" stroke-width="5"/><text x="92" y="50" fill="#fff7df" font-size="9" font-family="monospace">STAPLE-O-MATIC</text></svg>
+            <p class="eyebrow">STAPLE-O-MATIC / MARK IV</p>
+            <p id="invoiceInstruction"></p>
+            <button id="invoiceInspect" class="primary-button">Examine the ink</button>
+            <div id="invoiceFilters" class="invoice-filters hidden" role="group" aria-label="Scanner light filter"><button data-filter="visible">Visible light</button><button data-filter="uv">UV · purple light</button><button data-filter="heat">Heat</button></div>
+            <button id="invoiceFile" class="primary-button hidden">File restored receipt</button>
+            <p class="scanner-note">Also staples. Technically.</p>
+          </aside>
+        </div>
+        <p id="invoiceStatus" class="invoice-status" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+    <section id="fieldPuzzle" class="field-puzzle hidden" role="dialog" aria-modal="true" aria-labelledby="fieldTitle">
+      <div class="field-shell"><header><div><p class="eyebrow">DAVID’S FIELD LAB / FOLLOW THE PAPER</p><h2 id="fieldTitle"></h2></div><button id="closeField" aria-label="Close field lab">×</button></header>
+      <p id="fieldInstruction" class="field-instruction"></p><div class="field-records"><article id="fieldSource"></article><article id="fieldRecord"></article></div>
+      <div class="field-deduction"><p id="fieldQuestion"></p><div id="fieldChoices"></div><p id="fieldFeedback" role="status"></p><button id="fieldFile" class="primary-button hidden">File verified evidence</button></div></div>
+    </section>
+    <script src="portraits.js?v=spyfox-review-3"></script>
+    <script src="walking-scenes.js?v=spyfox-review-3"></script>
+    <script src="adventure-model.js?v=spyfox-review-3"></script>
+    <script src="walk-model.js?v=spyfox-review-3"></script>
+    <script src="first-case-model.js?v=spyfox-review-3"></script>
+    <script src="cutscenes.js?v=playable-opening-1"></script>
+    <script src="game.js?v=playable-opening-1"></script>
+    <script src="first-case.js?v=spyfox-review-3"></script>
+    <script src="walking.js?v=playable-opening-1"></script>
+    <script src="adventure.js?v=playable-opening-1"></script>
+    <script src="field-kit.js?v=playable-opening-1"></script>
+  </body>
+</html>
